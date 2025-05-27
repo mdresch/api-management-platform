@@ -181,7 +181,41 @@ const stats = [
   { label: "Uptime", value: "99.99%", icon: Activity },
 ]
 
+// Import statements for new components
+// import Navigation from './components/Navigation';
+// import HeroSection from './components/HeroSection';
+// import StatsSection from './components/StatsSection';
+// import FeaturesSection from './components/FeaturesSection';
+// import BenefitsSection from './components/BenefitsSection';
+// import TestimonialsSection from './components/TestimonialsSection';
+// import PricingSection from './components/PricingSection';
+// import CTASection from './components/CTASection';
+// import Footer from './components/Footer';
+
 export default function MarketingPage() {
+  const [email, setEmail] = useState("")
+
+  const handleDemoRequest = () => {
+    // In a real app, this would submit to your backend
+    console.log("Demo requested for:", email)
+    // Redirect to demo page
+    window.location.href = "/demo"
+  }
+
+  return (
+    <div className="min-h-screen bg-background">
+      {/* <Navigation /> */}
+      {/* <HeroSection email={email} setEmail={setEmail} handleDemoRequest={handleDemoRequest} /> */}
+      {/* <StatsSection stats={stats} /> */}
+      {/* <FeaturesSection features={features} /> */}
+      {/* <BenefitsSection benefits={benefits} /> */}
+      {/* <TestimonialsSection testimonials={testimonials} /> */}
+      {/* <PricingSection pricingPlans={pricingPlans} /> */}
+      {/* <CTASection /> */}
+      {/* <Footer /> */}
+    </div>
+  )
+}
   const [email, setEmail] = useState("")
 
   const handleDemoRequest = () => {
