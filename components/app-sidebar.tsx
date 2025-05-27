@@ -153,9 +153,9 @@ export function AppSidebar() {
   const allowedRoutes = rolePermissions[role] || []
 
   // Helper to check if a nav item or any of its subitems is allowed
-  function isAllowed(item: any) {
+  function isAllowed(item: NavigationItem) {
     if (item.href && allowedRoutes.some((route) => item.href.startsWith(route))) return true
-    if (item.items && item.items.some((sub: any) => allowedRoutes.some((route) => sub.href.startsWith(route)))) return true
+    if (item.items && item.items.some((sub: NavigationItem) => allowedRoutes.some((route) => sub.href?.startsWith(route)))) return true
     return false
   }
 
