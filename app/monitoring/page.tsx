@@ -31,7 +31,138 @@ import {
   Settings,
 } from "lucide-react"
 
-const systemMetrics = [
+Network,
+  Settings,
+} from "lucide-react"
+import { useMemo } from 'react' // import useMemo
+
+export default function MonitoringPage() {
+  const systemMetrics = useMemo(() => [
+    {
+      title: "System Health",
+      value: "Healthy",
+      status: "good",
+      icon: CheckCircle,
+      description: "All systems operational",
+    },
+    {
+      title: "Active APIs",
+      value: "127",
+      change: "+3",
+      trend: "up",
+      icon: Globe,
+      description: "APIs currently running",
+    },
+    {
+      title: "Total Requests",
+      value: "2.4M",
+      change: "+12%",
+      trend: "up",
+      icon: Activity,
+      description: "Requests in last 24h",
+    },
+    {
+      title: "Avg Response Time",
+      value: "142ms",
+      change: "-8ms",
+      trend: "down",
+      icon: Zap,
+      description: "Average across all APIs",
+    },
+  ], [])
+
+  const infrastructureMetrics = useMemo(() => [
+    {
+      name: "CPU Usage",
+      value: 68,
+      status: "normal",
+      threshold: 80,
+      icon: Cpu,
+    },
+    {
+      name: "Memory Usage",
+      value: 72,
+      status: "normal",
+      threshold: 85,
+      icon: HardDrive,
+    },
+    {
+      name: "Network I/O",
+      value: 45,
+      status: "good",
+      threshold: 70,
+      icon: Network,
+    },
+    {
+      name: "Database Load",
+      value: 58,
+      status: "good",
+      threshold: 75,
+      icon: Database,
+    },
+  ], [])
+
+  const recentAlerts = useMemo(() => [
+    {
+      id: "1",
+      type: "warning",
+      title: "High CPU usage on API Gateway",
+      description: "CPU usage exceeded 80% for 5 minutes",
+      timestamp: "2024-01-15 14:30",
+      status: "resolved",
+    },
+    {
+      id: "2",
+      type: "info",
+      title: "New API deployment successful",
+      description: "User Management API v2.1.0 deployed successfully",
+      timestamp: "2024-01-15 13:45",
+      status: "resolved",
+    },
+    {
+      id: "3",
+      type: "error",
+      title: "Database connection timeout",
+      description: "Connection pool exhausted on primary database",
+      timestamp: "2024-01-15 12:15",
+      status: "investigating",
+    },
+  ], [])
+
+  const serviceStatus = useMemo(() => [
+    {
+      name: "API Gateway",
+      status: "operational",
+      uptime: "99.98%",
+      responseTime: "89ms",
+      lastIncident: "None",
+    },
+    {
+      name: "Authentication Service",
+      status: "operational",
+      uptime: "99.99%",
+      responseTime: "45ms",
+      lastIncident: "None",
+    },
+    {
+      name: "Database Cluster",
+      status: "operational",
+      uptime: "99.97%",
+      responseTime: "12ms",
+      lastIncident: "2 days ago",
+    },
+    {
+      name: "Cache Layer",
+      status: "degraded",
+      uptime: "99.85%",
+      responseTime: "156ms",
+      lastIncident: "4 hours ago",
+    },
+  ], [])
+
+  return (
+    <SidebarInset>
+      <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
   {
     title: "System Health",
     value: "Healthy",
