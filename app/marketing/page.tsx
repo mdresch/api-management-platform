@@ -204,46 +204,6 @@ export default function MarketingPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* <Navigation /> */}
-      {/* <HeroSection email={email} setEmail={setEmail} handleDemoRequest={handleDemoRequest} /> */}
-      {/* <StatsSection stats={stats} /> */}
-      {/* <FeaturesSection features={features} /> */}
-      {/* <BenefitsSection benefits={benefits} /> */}
-      {/* <TestimonialsSection testimonials={testimonials} /> */}
-      {/* <PricingSection pricingPlans={pricingPlans} /> */}
-      {/* <CTASection /> */}
-      {/* <Footer /> */}
-    </div>
-  )
-}
-  const [email, setEmail] = useState("")
-
-  const handleDemoRequest = () => {
-    // In a real app, this would submit to your backend
-const [email, setEmail] = useState("")
-
-  const handleDemoRequest = () => {
-    // In a real app, this would submit to your backend and handle errors
-    try {
-      // TODO: Implement proper backend submission
-      // For now, we'll just log the email
-      console.log("Demo requested for:", email)
-      // Redirect to demo page
-      window.location.href = "/demo"
-    } catch (error) {
-      // TODO: Implement proper error handling and logging
-      console.error("Error requesting demo:", error)
-    }
-  }
-
-  return (
-    // Redirect to demo page
-    window.location.href = "/demo"
-  }
-
-  return (
-    <div className="min-h-screen bg-background">
-      {/* Navigation */}
       <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">

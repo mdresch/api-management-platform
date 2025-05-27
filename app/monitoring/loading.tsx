@@ -15,26 +15,23 @@ export default function MonitoringLoading() {
         </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+  {/* You can add skeleton cards here if needed */}
 </div>
-
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {Array.from({ length: 4 }).map((__, i) => (
-          <Card key={i}>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <Skeleton className="h-4 w-24" />
-          <Card key={i}>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <Skeleton className="h-4 w-24" />
-              <Skeleton className="h-4 w-4" />
-            </CardHeader>
-            <CardContent>
-              <Skeleton className="h-8 w-16" />
-              <Skeleton className="h-3 w-32 mt-2" />
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+  {Array.from({ length: 4 }).map((__, i) => (
+    <Card key={i}>
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <Skeleton className="h-4 w-24" />
+        <Skeleton className="h-4 w-4" />
+      </CardHeader>
+      <CardContent>
+        <Skeleton className="h-8 w-16" />
+        <Skeleton className="h-3 w-32 mt-2" />
+      </CardContent>
+    </Card>
+  ))}
+</div>
 
       <Card>
         <CardHeader>
