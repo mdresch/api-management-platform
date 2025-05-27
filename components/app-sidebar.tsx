@@ -33,6 +33,7 @@ import {
   Store,
   Wand2,
   Network,
+  Rocket,
 } from "lucide-react"
 import Link from "next/link"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
@@ -42,6 +43,11 @@ const navigation = [
     title: "Overview",
     icon: LayoutDashboard,
     href: "/",
+  },
+  {
+    title: "Marketing Site",
+    icon: Rocket,
+    href: "/marketing",
   },
   {
     title: "API Management",
