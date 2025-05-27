@@ -5,6 +5,25 @@ This document describes the Role-Based Access Control (RBAC) roles defined in th
 
 ---
 
+## Persona-to-Process Responsibility Matrix
+
+| Process                        | API Product Manager         | API Developer         | QA Engineer           | Security Officer      | API Consumer         | Enterprise Architect      |
+|------------------------------- |----------------------------|----------------------|-----------------------|----------------------|----------------------|--------------------------|
+| API Design & Modeling          | Define business goals       | ✅ Design & build     |                       |                      |                      | ✅ Define standards       |
+| API Documentation              | ✅ Review & approve         | ✅ Write & update     |                       |                      | ✅ Consume           | ✅ Ensure consistency     |
+| API Lifecycle Management       | ✅ Own lifecycle            | ✅ Implement          | ✅ Validate            | ✅ Monitor compliance |                      | ✅ Govern architecture    |
+| Testing & Validation           |                            | ✅ Unit tests         | ✅ Integration & E2E   | ✅ Security testing   |                      |                          |
+| Security & Access Control      | Define policies            | Implement auth       |                       | ✅ Enforce & audit    | ✅ Use keys           | ✅ Define architecture    |
+| Monitoring & Analytics         | ✅ Track KPIs               | ✅ Monitor logs       | ✅ Analyze errors      | ✅ Watch for threats  |                      | ✅ System-wide insights   |
+| Governance & Compliance        | ✅ Define policies          | Follow standards     | Validate coverage      | ✅ Enforce compliance |                      | ✅ Define frameworks      |
+| Developer Onboarding & Support | ✅ Define experience        | ✅ Provide guides     |                       |                      | ✅ Onboard           |                          |
+| Plugin & Extension Management  | Approve plugins            | ✅ Build plugins      |                       | ✅ Review security    |                      | ✅ Manage integrations    |
+| Executive Reporting            | ✅ Consume reports          | Provide data         | Provide test data      | ✅ Provide compliance |                      | ✅ Strategic insights     |
+
+✅ = Primary responsibility
+
+---
+
 ## Roles & Access Matrix
 
 | Role                   | Description & Context                                                                 | Menu/Screen Access                                                                                 |
