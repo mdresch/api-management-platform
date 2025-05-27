@@ -13,9 +13,6 @@ const ROLES: Role[] = [
 ];
 
 export default function ProfilePage() {
-];
-
-export default function ProfilePage() {
 	const [role, setRole] = useState<Role>(() => {
 		try {
 			return getCurrentUserRole();
@@ -43,20 +40,6 @@ export default function ProfilePage() {
 		} catch (error) {
 			console.error("Error setting current user role:", error);
 		}
-	};
-
-	return (
-
-	useEffect(() => {
-		setRole(getCurrentUserRole());
-	}, []);
-
-	const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		const newRole = e.target.value as Role;
-		setRole(newRole);
-		setCurrentUserRole(newRole);
-		// Use a short timeout before reload to ensure localStorage is flushed
-		setTimeout(() => window.location.reload(), 100);
 	};
 
 	return (
