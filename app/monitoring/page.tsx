@@ -432,9 +432,9 @@ export default function MonitoringPage() {
                     {metric.trend === "up" ? (
                       <TrendingUp className="mr-1 h-3 w-3 text-green-600" />
                     ) : (
-                      <TrendingDown className="mr-1 h-3 w-3 text-green-600" />
+                      <TrendingDown className="mr-1 h-3 w-3 text-red-600" />
                     )}
-                    <span className="text-green-600">{metric.change}</span> from last period
+                    <span className={metric.trend === "up" ? "text-green-600" : "text-red-600"}>{metric.change}</span> from last period
                   </p>
                 )}
                 <p className="text-xs text-muted-foreground mt-1">{metric.description}</p>
