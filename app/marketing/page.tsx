@@ -186,7 +186,23 @@ export default function MarketingPage() {
 
   const handleDemoRequest = () => {
     // In a real app, this would submit to your backend
-    console.log("Demo requested for:", email)
+const [email, setEmail] = useState("")
+
+  const handleDemoRequest = () => {
+    // In a real app, this would submit to your backend and handle errors
+    try {
+      // TODO: Implement proper backend submission
+      // For now, we'll just log the email
+      console.log("Demo requested for:", email)
+      // Redirect to demo page
+      window.location.href = "/demo"
+    } catch (error) {
+      // TODO: Implement proper error handling and logging
+      console.error("Error requesting demo:", error)
+    }
+  }
+
+  return (
     // Redirect to demo page
     window.location.href = "/demo"
   }
