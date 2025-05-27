@@ -37,6 +37,8 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+import { useRBAC } from "@/components/rbac-context"
+import { rolePermissions } from "@/lib/rbac"
 
 const navigation = [
   {
@@ -146,6 +148,17 @@ const navigation = [
 ]
 
 export function AppSidebar() {
+  const { role } = useRBAC()
+  // Flatten allowed routes for this role
+  const allowedRoutes = rolePermissions[role] || []
+
+  // Helper to check if a nav item or any of its subitems is allowed
+  function isAllowed(item: NavigationItem) {
+    if (item.href && allowedRoutes.some((route) => item.href.startsWith(route))) return true
+    if (item.items && item.items.some((sub: NavigationItem) => allowedRoutes.some((route) => sub.href?.startsWith(route)))) return true
+    return false
+  }
+
   return (
     <Sidebar className="border-r">
       <SidebarHeader className="border-b px-6 py-4">
@@ -163,7 +176,7 @@ export function AppSidebar() {
       <SidebarContent className="px-4 py-4">
         <SidebarGroup>
           <SidebarMenu>
-            {navigation.map((item) => (
+            {navigation.filter(isAllowed).map((item) => (
               <SidebarMenuItem key={item.title}>
                 {item.items ? (
                   <Collapsible defaultOpen className="group/collapsible">
@@ -176,7 +189,7 @@ export function AppSidebar() {
                     </CollapsibleTrigger>
                     <CollapsibleContent>
                       <SidebarMenuSub>
-                        {item.items.map((subItem) => (
+                        {item.items.filter((sub) => allowedRoutes.some((route) => sub.href.startsWith(route))).map((subItem) => (
                           <SidebarMenuSubItem key={subItem.title}>
                             <SidebarMenuSubButton asChild>
                               <Link href={subItem.href}>
@@ -217,9 +230,11 @@ export function AppSidebar() {
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent side="top" className="w-[--radix-popper-anchor-width]">
-                <DropdownMenuItem>
-                  <User className="mr-2 h-4 w-4" />
-                  <span>Profile</span>
+                <DropdownMenuItem asChild>
+                  <a href="/profile">
+                    <User className="mr-2 h-4 w-4" />
+                    <span>Profile</span>
+                  </a>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Settings className="mr-2 h-4 w-4" />
