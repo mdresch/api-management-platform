@@ -154,7 +154,87 @@ const serviceStatus = [
   },
 ]
 
+// Import statements for new components
+import SystemOverview from '@/components/monitoring/SystemOverview'
+import InfrastructureMetrics from '@/components/monitoring/InfrastructureMetrics'
+import ServiceStatus from '@/components/monitoring/ServiceStatus'
+import RecentAlerts from '@/components/monitoring/RecentAlerts'
+import SystemLogs from '@/components/monitoring/SystemLogs'
+
 export default function MonitoringPage() {
+  return (
+    <SidebarInset>
+      <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+        <SidebarTrigger className="-ml-1" />
+        <Separator orientation="vertical" className="mr-2 h-4" />
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Dashboard</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Monitoring</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </header>
+
+      <div className="flex flex-1 flex-col gap-4 p-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight">System Monitoring</h1>
+            <p className="text-muted-foreground">Real-time monitoring and alerting for your API infrastructure</p>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Select defaultValue="24h">
+              <SelectTrigger className="w-32">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="1h">Last Hour</SelectItem>
+                <SelectItem value="24h">Last 24 Hours</SelectItem>
+                <SelectItem value="7d">Last 7 Days</SelectItem>
+                <SelectItem value="30d">Last 30 Days</SelectItem>
+              </SelectContent>
+            </Select>
+            <Button variant="outline">
+              <Settings className="mr-2 h-4 w-4" />
+              Configure Alerts
+            </Button>
+          </div>
+        </div>
+
+        <SystemOverview systemMetrics={systemMetrics} />
+
+        <Tabs defaultValue="infrastructure" className="space-y-4">
+          <TabsList>
+            <TabsTrigger value="infrastructure">Infrastructure</TabsTrigger>
+            <TabsTrigger value="services">Service Status</TabsTrigger>
+            <TabsTrigger value="alerts">Alerts & Incidents</TabsTrigger>
+            <TabsTrigger value="logs">System Logs</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="infrastructure" className="space-y-4">
+            <InfrastructureMetrics infrastructureMetrics={infrastructureMetrics} />
+          </TabsContent>
+
+          <TabsContent value="services" className="space-y-4">
+            <ServiceStatus serviceStatus={serviceStatus} />
+          </TabsContent>
+
+          <TabsContent value="alerts" className="space-y-4">
+            <RecentAlerts recentAlerts={recentAlerts} />
+          </TabsContent>
+
+          <TabsContent value="logs" className="space-y-4">
+            <SystemLogs />
+          </TabsContent>
+        </Tabs>
+      </div>
+    </SidebarInset>
+  )
+}
   return (
     <SidebarInset>
       <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
